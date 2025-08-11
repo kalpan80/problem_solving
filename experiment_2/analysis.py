@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+plt.rcParams['axes.labelsize'] = 14
 
 def exploration():
     df = pd.DataFrame(columns=['Episode', 'RL_Exploration', 'LLM_Exploration'])
@@ -20,8 +21,8 @@ def exploitation():
     rl = pd.read_csv('taxi_training_q.csv')
     llm = pd.read_csv('llm_training.csv')
     df['Episode'] = llm['Episode']
-    df['RL_Exploitation'] = rl['Exploitation']
-    df['LLM_Exploitation'] = llm['Exploitation']
+    df['RL_Exploitation'] = rl['Exploitation'].cumsum()
+    df['LLM_Exploitation'] = llm['Exploitation'].cumsum()
 
     df.plot(x='Episode',y=['RL_Exploitation','LLM_Exploitation'])
     plt.title('Line Plot of RL_Exploitation and LLM_Exploitation')
