@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field
 from problem_solving.dqn_agent import DQNAgent
 
 load_dotenv()
-MODEL = 'gpt-4.1-mini'
+MODEL = 'gpt-5-nano'
 
 class RLParams(BaseModel):
     gamma: float = Field('The discount factor')
